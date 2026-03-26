@@ -1,3 +1,6 @@
 spring:
   application:
     name: api-sousadev-acompanhamento
+  devtools:
+    livereload:
+      enabled: false

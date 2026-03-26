@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class ProdutoService {
@@ -71,6 +70,7 @@ public class ProdutoService {
                     .orElse(0) + 1;
 
             ProdutoModel novoProduto = ProdutoModel.builder()
+                    .id(id)
                     .nome(produtoDto.getNome())
                     .preco(produtoDto.getPreco())
                     .quantidade(produtoDto.getQuantidade())

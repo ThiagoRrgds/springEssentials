@@ -1,13 +1,14 @@
 package com.thiago.api_sousadev_acompanhamento.controller;
 
 import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoModel;
+import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
 import com.thiago.api_sousadev_acompanhamento.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class ProdutoController {
         return ResponseEntity.created(URI.create("/v1/produtos/" + produto.getId()))
                 .body(produto);
     }
-    
+
     @PutMapping("/{id}")
     public ProdutoModel updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Integer id) {
         return produtoService.updateProduct(produtoDto, id);
