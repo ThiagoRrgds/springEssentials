@@ -2,6 +2,7 @@ package com.thiago.api_sousadev_acompanhamento.controller;
 
 import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoModel;
 import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
+import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
 import com.thiago.api_sousadev_acompanhamento.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ProdutoModel updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Integer id) {
+    public ProdutoModel updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Integer id) throws NotFoundException {
         return produtoService.updateProduct(produtoDto, id);
     }
 

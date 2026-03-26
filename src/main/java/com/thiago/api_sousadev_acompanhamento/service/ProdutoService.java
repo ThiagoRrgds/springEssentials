@@ -2,6 +2,7 @@ package com.thiago.api_sousadev_acompanhamento.service;
 
 import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoModel;
 import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
+import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -82,11 +83,11 @@ public class ProdutoService {
         }
 
 
-        public ProdutoModel updateProduct(ProdutoDto produtoDto, Integer id){
+        public ProdutoModel updateProduct(ProdutoDto produtoDto, Integer id) throws NotFoundException {
             ProdutoModel produto = PRODUTOS.stream()
                     .filter(p -> p.getId().equals(id))
                     .findAny()
-                    .orElseThrow(() -> new RuntimeException("produto não encontrado"));
+                    .orElseThrow(() ->new NotFoundException("produto não encontrado"));
 
             return produto;
         }
