@@ -20,4 +20,26 @@ public class ProdutoController {
     public ResponseEntity<List<ProdutoModel>> findAll() {
         return ResponseEntity.ok(produtoService.findAll());
     }
+
+    @PostMapping
+    public ResponseEntity<ProdutoModel> createProduct(@RequestBody ProdutoDto produtoDto) {
+        ProdutoModel produto = produtoService.createProduct(produtoDto);
+        return ResponseEntity.created(URI.create("/v1/produtos/" + produto.getId()))
+                .body(produto);
+    }
+    
+    @PutMapping("/{id}")
+    public ProdutoModel updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Integer id) {
+        return produtoService.updateProduct(produtoDto, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id) {
+         boolean removed = produtoService.deleteProduct(id);
+         if (removed) {
+             return ResponseEntity.noContent().build();
+         } else {
+             return ResponseEntity.notFound().build();
+         }
+    }
 }
