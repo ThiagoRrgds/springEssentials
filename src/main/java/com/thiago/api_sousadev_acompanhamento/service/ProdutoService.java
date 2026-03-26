@@ -81,4 +81,19 @@ public class ProdutoService {
             return novoProduto;
         }
 
+
+        public ProdutoModel updateProduct(ProdutoDto produtoDto, Integer id){
+            ProdutoModel produto = PRODUTOS.stream()
+                    .filter(p -> p.getId().equals(id))
+                    .findAny()
+                    .orElseThrow(() -> new RuntimeException("produto não encontrado"));
+
+            return produto;
+        }
+
+            public boolean deleteProduct(Integer id) {
+                PRODUTOS.removeIf(p -> p.getId().equals(id));
+                return false;
+            }
+
 }
