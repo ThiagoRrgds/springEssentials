@@ -1,5 +1,6 @@
 package com.thiago.api_sousadev_acompanhamento.database.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -10,9 +11,16 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString
 @Builder
-public class ProdutoModel {
+@Entity
+@Table(name = "produtos")
+public class ProdutoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String nome;
+    @Column
     private BigDecimal preco;
+    @Column
     private Integer quantidade;
 }

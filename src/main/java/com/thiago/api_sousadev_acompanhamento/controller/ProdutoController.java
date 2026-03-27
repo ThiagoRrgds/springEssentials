@@ -1,11 +1,10 @@
 package com.thiago.api_sousadev_acompanhamento.controller;
 
-import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoModel;
+import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoEntity;
 import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
 import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
 import com.thiago.api_sousadev_acompanhamento.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,29 +18,26 @@ public class ProdutoController {
     private final ProdutoService produtoService;
 
     @GetMapping
-    public ResponseEntity<List<ProdutoModel>> findAll() {
+    public ResponseEntity<List<ProdutoEntity>> findAll() {
         return ResponseEntity.ok(produtoService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoModel> createProduct(@RequestBody ProdutoDto produtoDto) {
-        ProdutoModel produto = produtoService.createProduct(produtoDto);
+    public ResponseEntity<ProdutoEntity> createProduct(@RequestBody ProdutoDto produtoDto) {
+        ProdutoEntity produto = produtoService.createProduct(produtoDto);
         return ResponseEntity.created(URI.create("/v1/produtos/" + produto.getId()))
                 .body(produto);
     }
 
     @PutMapping("/{id}")
-    public ProdutoModel updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Integer id) throws NotFoundException {
-        return produtoService.updateProduct(produtoDto, id);
+    public ResponseEntity<ProdutoEntity> updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Long id) throws NotFoundException {
+       ProdutoEntity produto = produtoService.updateProduct(produtoDto, id);
+        return ResponseEntity.ok(produto);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id) {
-         boolean removed = produtoService.deleteProduct(id);
-         if (removed) {
-             return ResponseEntity.noContent().build();
-         } else {
-             return ResponseEntity.notFound().build();
-         }
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) throws NotFoundException {
+        produtoService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
