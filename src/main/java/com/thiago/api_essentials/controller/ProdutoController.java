@@ -1,12 +1,14 @@
 package com.thiago.api_essentials.controller;
 
 import com.thiago.api_essentials.database.model.ProdutoEntity;
-import com.thiago.api_essentials.dto.ProdutoDto;
+import com.thiago.api_essentials.dto.ProdutoDTO;
 import com.thiago.api_essentials.exception.NotFoundException;
 import com.thiago.api_essentials.service.ProdutoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/produtos")
 @RequiredArgsConstructor
+@Validated
 public class ProdutoController {
     private final ProdutoService produtoService;
 
@@ -23,7 +26,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<ProdutoEntity>> createProduct(@RequestBody List<ProdutoDto> produtoDto) {
+    public ResponseEntity<List<ProdutoEntity>> createProduct(@Valid @RequestBody List<ProdutoDTO> produtoDto) {
         List<ProdutoEntity> produtos = produtoDto.stream()
                 .map(produtoService::createProduct)
                 .toList();
@@ -31,7 +34,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProdutoEntity> updateProduct(@RequestBody ProdutoDto produtoDto, @PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<ProdutoEntity> updateProduct(@Valid @RequestBody ProdutoDTO produtoDto, @PathVariable Long id) throws NotFoundException {
        ProdutoEntity produto = produtoService.updateProduct(produtoDto, id);
         return ResponseEntity.ok(produto);
     }
