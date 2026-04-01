@@ -1,7 +1,7 @@
-package com.thiago.api_sousadev_acompanhamento.handler;
+package com.thiago.api_essentials.handler;
 
-import com.thiago.api_sousadev_acompanhamento.exception.ErrorResponse;
-import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
+import com.thiago.api_essentials.exception.ErrorResponse;
+import com.thiago.api_essentials.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

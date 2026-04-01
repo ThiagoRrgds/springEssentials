@@ -1,15 +1,14 @@
-package com.thiago.api_sousadev_acompanhamento.controller;
+package com.thiago.api_essentials.controller;
 
-import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoEntity;
-import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
-import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
-import com.thiago.api_sousadev_acompanhamento.service.ProdutoService;
+import com.thiago.api_essentials.database.model.ProdutoEntity;
+import com.thiago.api_essentials.dto.ProdutoDto;
+import com.thiago.api_essentials.exception.NotFoundException;
+import com.thiago.api_essentials.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController

@@ -1,9 +1,9 @@
-package com.thiago.api_sousadev_acompanhamento.service;
+package com.thiago.api_essentials.service;
 
-import com.thiago.api_sousadev_acompanhamento.database.model.ProdutoEntity;
-import com.thiago.api_sousadev_acompanhamento.database.repository.ProdutoRepository;
-import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
-import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
+import com.thiago.api_essentials.database.model.ProdutoEntity;
+import com.thiago.api_essentials.database.repository.ProdutoRepository;
+import com.thiago.api_essentials.dto.ProdutoDto;
+import com.thiago.api_essentials.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

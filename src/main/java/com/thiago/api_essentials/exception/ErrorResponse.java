@@ -1,4 +1,4 @@
-package com.thiago.api_sousadev_acompanhamento.exception;
+package com.thiago.api_essentials.exception;
 
 import lombok.*;
 

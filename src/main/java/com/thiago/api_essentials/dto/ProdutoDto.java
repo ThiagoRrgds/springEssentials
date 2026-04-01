@@ -1,4 +1,4 @@
-package com.thiago.api_sousadev_acompanhamento.dto;
+package com.thiago.api_essentials.dto;
 
 import lombok.*;
 

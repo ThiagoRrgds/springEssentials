@@ -1,4 +1,4 @@
-package com.thiago.api_sousadev_acompanhamento.controller;
+package com.thiago.api_essentials.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

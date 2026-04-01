@@ -1,4 +1,4 @@
-package com.thiago.api_sousadev_acompanhamento.database.model;
+package com.thiago.api_essentials.database.model;
 
 import jakarta.persistence.*;
 import lombok.*;

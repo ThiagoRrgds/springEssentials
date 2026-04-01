@@ -1,4 +1,4 @@
-package com.thiago.api_sousadev_acompanhamento.enums;
+package com.thiago.api_essentials.enums;
 
 public enum Role {
     ROLE_ADMIN,
