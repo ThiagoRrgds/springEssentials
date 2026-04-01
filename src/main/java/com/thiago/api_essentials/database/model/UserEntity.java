@@ -4,6 +4,7 @@ import com.thiago.api_essentials.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -20,12 +21,15 @@ public class UserEntity {
     private UUID id;
     @Column(unique = true,nullable = false)
     private String name;
-    @Column(unique = true,nullable = false)
+    @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<PedidosEntity> pedidos;
 
 }
