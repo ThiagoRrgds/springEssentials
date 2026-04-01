@@ -5,6 +5,7 @@ import com.thiago.api_sousadev_acompanhamento.dto.ProdutoDto;
 import com.thiago.api_sousadev_acompanhamento.exception.NotFoundException;
 import com.thiago.api_sousadev_acompanhamento.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +24,11 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoEntity> createProduct(@RequestBody ProdutoDto produtoDto) {
-        ProdutoEntity produto = produtoService.createProduct(produtoDto);
-        return ResponseEntity.created(URI.create("/v1/produtos/" + produto.getId()))
-                .body(produto);
+    public ResponseEntity<List<ProdutoEntity>> createProduct(@RequestBody List<ProdutoDto> produtoDto) {
+        List<ProdutoEntity> produtos = produtoDto.stream()
+                .map(produtoService::createProduct)
+                .toList();
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtos);
     }
 
     @PutMapping("/{id}")
