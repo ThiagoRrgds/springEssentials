@@ -38,4 +38,10 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEntity> updateUser(@Valid @RequestBody UserDTO userDTO, @PathVariable UUID id) throws NotFoundException {
+        UserEntity usuario = userService.updateUser(userDTO, id);
+        return ResponseEntity.ok(usuario);
+    }
+
 }
