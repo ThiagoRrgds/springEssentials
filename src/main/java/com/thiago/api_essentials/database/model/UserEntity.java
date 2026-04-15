@@ -29,7 +29,7 @@ public class UserEntity {
     @Column(nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<PedidosEntity> pedidos;
 
 }

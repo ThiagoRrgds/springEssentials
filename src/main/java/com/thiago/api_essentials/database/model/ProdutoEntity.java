@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +24,6 @@ public class ProdutoEntity {
     private BigDecimal preco;
     @Column
     private Integer quantidade;
+    @ManyToMany(mappedBy = "produto")
+    private List<PedidosEntity> pedidos;
 }
